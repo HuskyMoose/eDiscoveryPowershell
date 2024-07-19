@@ -1,0 +1,1 @@
+gci -Recurse * | Select-Object -Property Name,Length,Directory,@{name="MD5_Hash";expression={(Get-FileHash -Algorithm MD5 $_.FullName).hash}}, @{name="SHA1_Hash";expression={(Get-FileHash -Algorithm SHA1 $_.FullName).hash}} | Export-CSV Index.csv 
